@@ -87,7 +87,8 @@ SPARE_KEYWORDS = [
 
 
 def _read(name):
-	with open(os.path.join(DATA_DIR, name), newline="", encoding="utf-8") as fh:
+	# utf-8-sig strips a BOM if present so header keys stay clean (e.g. "Employee No").
+	with open(os.path.join(DATA_DIR, name), newline="", encoding="utf-8-sig") as fh:
 		return list(csv.DictReader(fh))
 
 
@@ -344,6 +345,32 @@ def run():
 
 	frappe.db.commit()
 	print(f"Seed complete. PM Schedules created: {created}")
+	_print_counts()
+
+
+def create_reviewer(email="reviewer@californiaburrito.in", password="Review@2026"):
+	"""Create a System Manager login for reviewers to click through the site."""
+	if frappe.db.exists("User", email):
+		print(f"Reviewer already exists: {email}")
+		return email
+	user = frappe.get_doc(
+		{
+			"doctype": "User",
+			"email": email,
+			"first_name": "CB",
+			"last_name": "Reviewer",
+			"send_welcome_email": 0,
+			"new_password": password,
+		}
+	)
+	user.insert(ignore_permissions=True)
+	user.add_roles("System Manager")
+	frappe.db.commit()
+	print(f"Created reviewer {email} / {password}")
+	return email
+
+
+def _print_counts():
 	print(
 		"Counts:",
 		{

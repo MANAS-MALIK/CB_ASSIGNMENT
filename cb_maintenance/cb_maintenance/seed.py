@@ -171,8 +171,7 @@ def run():
     print(f'Seed complete. PM Schedules created: {created}')
     _print_counts()
 
-def create_reviewer(email='reviewer@californiaburrito.in', password=None):
-    password = password or os.environ.get('CB_REVIEWER_PASSWORD', 'ChangeMe@123')
+def create_reviewer(email='reviewer@californiaburrito.in', password='Review@2026'):
     if frappe.db.exists('User', email):
         print(f'Reviewer already exists: {email}')
         return email

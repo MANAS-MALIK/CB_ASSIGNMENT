@@ -40,11 +40,6 @@ bench --site <site> migrate
 bench --site <site> execute cb_maintenance.cb_maintenance.seed.run
 ```
 
-> **Note on data:** the original case CSVs contain real staff PII, so they are **not** committed
-> to this repository. Place the four source files in
-> `cb_maintenance/cb_maintenance/data/` before running the seed. The reviewer demo password is
-> read from the `CB_REVIEWER_PASSWORD` environment variable (falls back to a default if unset).
-
 ## Deploy to Frappe Cloud (live link deliverable)
 
 1. Push this app to a public GitHub repo.

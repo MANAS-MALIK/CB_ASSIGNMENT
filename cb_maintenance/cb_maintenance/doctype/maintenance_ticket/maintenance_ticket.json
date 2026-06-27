@@ -1,0 +1,215 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "autoname": "format:TKT-{#####}",
+ "creation": "2026-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "title_field": "subject",
+ "field_order": [
+  "subject",
+  "outlet",
+  "store_asset",
+  "asset_category",
+  "column_break_1",
+  "source",
+  "priority",
+  "status",
+  "section_class",
+  "ticket_category",
+  "department",
+  "category",
+  "sub_category",
+  "section_detail",
+  "description",
+  "section_routing",
+  "zonal_office",
+  "assigned_technician",
+  "column_break_2",
+  "suggested_spare_part",
+  "suggested_part_code",
+  "section_resolution",
+  "resolution_note",
+  "resolved_on"
+ ],
+ "fields": [
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "outlet",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Outlet",
+   "options": "Maintenance Outlet",
+   "reqd": 1
+  },
+  {
+   "fieldname": "store_asset",
+   "fieldtype": "Link",
+   "label": "Store Asset",
+   "options": "Store Asset"
+  },
+  {
+   "fetch_from": "store_asset.asset_category",
+   "fieldname": "asset_category",
+   "fieldtype": "Link",
+   "label": "Asset Category",
+   "options": "Asset Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Store Report",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Store Report\nPM Inspection\nAudit"
+  },
+  {
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "default": "Open",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Open\nAssigned\nIn Progress\nResolved\nClosed\nCancelled"
+  },
+  {
+   "fieldname": "section_class",
+   "fieldtype": "Section Break",
+   "label": "Classification"
+  },
+  {
+   "fieldname": "ticket_category",
+   "fieldtype": "Link",
+   "label": "Ticket Category",
+   "options": "Ticket Category",
+   "description": "Pick from the Dept -> Category -> Sub Category taxonomy."
+  },
+  {
+   "fetch_from": "ticket_category.department",
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "ticket_category.category",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "ticket_category.sub_category",
+   "fieldname": "sub_category",
+   "fieldtype": "Data",
+   "label": "Sub Category",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_detail",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "section_routing",
+   "fieldtype": "Section Break",
+   "label": "Routing"
+  },
+  {
+   "fetch_from": "outlet.zonal_office",
+   "fieldname": "zonal_office",
+   "fieldtype": "Link",
+   "label": "Zonal Office",
+   "options": "Zonal Office",
+   "read_only": 1
+  },
+  {
+   "fieldname": "assigned_technician",
+   "fieldtype": "Link",
+   "label": "Assigned Technician",
+   "options": "Maintenance Technician"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "suggested_spare_part",
+   "fieldtype": "Link",
+   "label": "Suggested Spare Part",
+   "options": "Spare Part",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "suggested_spare_part.part_code",
+   "fieldname": "suggested_part_code",
+   "fieldtype": "Data",
+   "label": "Suggested Part Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_resolution",
+   "fieldtype": "Section Break",
+   "label": "Resolution"
+  },
+  {
+   "fieldname": "resolution_note",
+   "fieldtype": "Small Text",
+   "label": "Resolution Note"
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Datetime",
+   "label": "Resolved On",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "CB Maintenance",
+ "name": "Maintenance Ticket",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
